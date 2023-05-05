@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { persistReducer } from 'redux-persist';
 
 const initialContacts = {
   items: [
