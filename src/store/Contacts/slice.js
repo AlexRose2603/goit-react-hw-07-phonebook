@@ -1,8 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 
-import storage from 'redux-persist/lib/storage';
-
 const initialContacts = {
   items: [
     { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -29,14 +27,5 @@ const contactsSlice = createSlice({
   },
 });
 
-const persistConfig = {
-  key: 'contacts',
-  storage,
-};
-
 export const { onAdd, onDelete } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
-export const persistedContactsReducer = persistReducer(
-  persistConfig,
-  contactsReducer
-);
