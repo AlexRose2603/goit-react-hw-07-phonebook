@@ -12,12 +12,12 @@ import {
 
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
-import { onAdd } from 'store/Contacts/slice';
-import { selectorContacts } from 'store/Contacts/selectors';
+import { selectContacts } from 'store/selectors';
 import { Report } from 'notiflix/build/notiflix-report-aio';
+import { addContact } from 'store/operations';
 
 export const ContactForm = () => {
-  const contacts = useSelector(selectorContacts);
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
   const handleSubmit = event => {
     event.preventDefault();
@@ -44,7 +44,7 @@ export const ContactForm = () => {
       number: number.value,
     };
 
-    dispatch(onAdd(newContact));
+    dispatch(addContact(newContact));
     form.reset();
   };
 
