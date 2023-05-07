@@ -5,11 +5,11 @@ import { ContactForm } from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
 import { Container, Title, Section, Total } from './App.styled';
 import { fetchContacts } from 'store/operations';
-import { selectError, selectIsLoading } from 'store/selectors';
-import { initialContacts } from 'store/contactsSlice';
+import { selectContacts, selectError, selectIsLoading } from 'store/selectors';
 
 export const App = () => {
   const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   useEffect(() => {
@@ -23,7 +23,7 @@ export const App = () => {
       <Section>Contacts</Section>
       {isLoading && !error && <b>Wait for it...</b>}
       <ContactList />
-      <Total>Total number of contacts: {initialContacts.items.length}</Total>
+      <Total>Total number of contacts: {contacts.length}</Total>
     </Container>
   );
 };
