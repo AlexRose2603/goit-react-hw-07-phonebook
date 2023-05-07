@@ -1,7 +1,7 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { addContact, deleteContact, fetchContacts } from 'store/operations';
 
-const initialContacts = {
+export const initialContacts = {
   items: [],
   isLoading: false,
   error: null,

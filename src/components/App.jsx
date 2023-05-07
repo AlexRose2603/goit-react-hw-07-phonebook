@@ -6,6 +6,7 @@ import { Filter } from './Filter/Filter';
 import { Container, Title, Section, Total } from './App.styled';
 import { fetchContacts } from 'store/operations';
 import { selectError, selectIsLoading } from 'store/selectors';
+import { initialContacts } from 'store/contactsSlice';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -20,9 +21,9 @@ export const App = () => {
       <ContactForm />
       <Filter />
       <Section>Contacts</Section>
-      {isLoading && !error && <b>Request in progress...</b>}
+      {isLoading && !error && <b>Wait for it...</b>}
       <ContactList />
-      {/* <Total>Total number of contacts: {contacts.length}</Total> */}
+      <Total>Total number of contacts: {initialContacts.items.length}</Total>
     </Container>
   );
 };
